@@ -8,6 +8,8 @@ import am4geodata_usaLow from "@amcharts/amcharts4-geodata/usaLow";
 import am4geodata_data_countries2 from "@amcharts/amcharts4-geodata/data/countries2";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
+import testSeries from '../data/country-data'
+
 /* Chart code */
 // Themes begin
 am4core.useTheme(am4themes_animated);
@@ -61,21 +63,19 @@ const Map = (props) => {
         // worldSeries.data = data;
                         
         let polygonTemplate = worldSeries.mapPolygons.template;
-        polygonTemplate.tooltipText = "{name}";
+        polygonTemplate.tooltipText = "{name} \n Value: {value} \n Rank: {rank}";
         polygonTemplate.fill = chart.colors.getIndex(0);
         polygonTemplate.nonScalingStroke = true;
-        
-        worldSeries.data = [{
-            "id": "US",
-            "name": "United States",
-            "value": 100,
-            "fill": am4core.color("#F05C5C")
-        }, {
-            "id": "FR",
-            "name": "France",
-            "value": 50,
-            "fill": am4core.color("#5C5CFF")
-        }];
+
+        worldSeries.heatRules.push({
+            "property": "fill",
+            "target":
+        worldSeries.mapPolygons.template,
+            "min": am4core.color("#ffffff"),
+            "max": am4core.color("#367B25")
+        });
+
+        worldSeries.data = testSeries;
 
         // Somehow, this makes the worldSeries.data thing above work
         polygonTemplate.propertyFields.fill = "fill";
