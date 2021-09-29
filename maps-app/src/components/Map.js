@@ -84,6 +84,22 @@ const Map = (props) => {
         let hs = polygonTemplate.states.create("hover");
         hs.properties.fill = am4core.color("#367B25");
 
+        // Texts
+        // let labelsContainer = chart.createChild(am4core.Container);
+        // labelsContainer.isMeasured = false;
+        // labelsContainer.x = 80;
+        // labelsContainer.y = 27;
+        // labelsContainer.layout = "horizontal";
+        // labelsContainer.zIndex = 10;
+
+        // let title = labelsContainer.createChild(am4core.Label);
+        // title.text = "World Happiness Index";
+        // title.fill = am4core.color("cc0000");
+        // title.fontSize = 20;
+        // title.valign = "middle";
+        // title.dy = 2;
+        // title.marginLeft = 15;
+
         // Series for United States map
         // let usaSeries = chart.series.push(new am4maps.MapPolygonSeries());
         // usaSeries.geodata = am4geodata_usaLow;
@@ -100,7 +116,9 @@ const Map = (props) => {
     }, []);
 
     return (
-        <div id="chartdiv" style={{ width: "100vw", height: "100vh" }}></div>
+        <div id="chartdiv" style={{ width: "100vw", height: "100vh" }}>
+            <h1>World Happiness Index</h1>
+        </div>
     )
 }
 

@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.mapSelector {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  z-index: 1;
+  font-family: Arial;
+}
