@@ -20,7 +20,7 @@ const Selector = (props) => {
 
     return (
         <div>
-            <Button variant='primary'>Click Me!</Button> // IT WORKS!
+            <Button variant='primary'>Click Me!</Button> {/* IT WORKS! */}
 
             {/* <DropdownButton id="dropdown-basic-button" title="Change Map">
                 <Dropdown.Item>World Happiness</Dropdown.Item>
