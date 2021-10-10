@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react";
+import React, { useState, useCallback, useLayoutEffect } from "react";
 
 /* Imports */
 import * as am4core from "@amcharts/amcharts4/core";
@@ -15,7 +15,7 @@ import testSeries from '../data/country-data'
 am4core.useTheme(am4themes_animated);
 // Themes end
 
-const Map = (props) => {
+const Map = ({ onToggle }) => {
   
     useLayoutEffect(() => {
 
