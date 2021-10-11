@@ -1,60 +1,54 @@
-import React, { useState, useLayoutEffect } from "react";
-import * as am4core from '@amcharts/amcharts4/core';
-import * as am4charts from '@amcharts/amcharts4/charts';
-import am4themes_animated from '@amcharts/amcharts4/themes/animated';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// Components
-import Selector from './components/Selector'
-import Map from './components/Map'
+import Map from './components/Map';
+import RealmsMap from './components/RealmsMap';
+import WaterMap from './components/WaterMap';
 
-am4core.useTheme(am4themes_animated);
+function App() {
+	
+	const dropdownStyle = {
+    	position: 'absolute',
+    	top: '5%',
+    	right: '10%',
+    	zIndex: 1,
+  	};
 
-function App(props) {
+  	const linkStyle = {
+    	color: 'black',
+    	textDecoration: 'none'
+  	};
 
-  const [showResults, setShowResults] = useState(false);
+  	return (
+    	<div class='container'>
+      		<Router>
+        		<div>
+          			<DropdownButton style={dropdownStyle} id='dropdown-button' variant='secondary' menuVariant="dark" title='Change Map' className='mt-2'>
+            			<Dropdown.Item> <Link style={linkStyle} to='/'>World Happiness Index</Link></Dropdown.Item>
+						<Dropdown.Item> <Link style={linkStyle} to='/water'>Water Per. Capita</Link></Dropdown.Item>
+						<Dropdown.Item> <Link style={linkStyle} to='/realms'>Cultural Realms</Link></Dropdown.Item>
+						<Dropdown.Divider />
+						<Dropdown.Item active='false' disabled='true'>More coming soon!</Dropdown.Item>
+					</DropdownButton>
+				</div>
 
-  const onClick = () => setShowResults(true)
-
-  const selected = (s) => {
-      alert("You selected " + s);
-  }
-
-  const dropdownStyle = {
-      position: 'absolute',
-      top: '5%',
-      right: '10%',
-      zIndex: 1,
-  };
-
-  return (
-    <div class='container'>
-      {/* <Selector /> */}
-      <div>
-          <DropdownButton
-            style={dropdownStyle}
-            id='dropdown-button'
-            variant='secondary'
-            menuVariant="dark"
-            title='Change Map'
-            className='mt-2'
-          >
-              <Dropdown.Item onClick={onClick}>World Happiness Index</Dropdown.Item>
-              <Dropdown.Item onClick={onClick}>Water Per. Capita</Dropdown.Item>
-              <Dropdown.Item onClick={onClick}>Cultural Realms</Dropdown.Item>
-              {/* <Dropdown.Item onClick={() => selected("World Happiness Index")}>World Happiness Index</Dropdown.Item>
-              <Dropdown.Item onClick={() => selected("Water Per. Capita")}>Water Per. Capita</Dropdown.Item>
-              <Dropdown.Item onClick={() => selected("Cultural Realms")}>Cultural Realms</Dropdown.Item> */}
-              <Dropdown.Divider />
-              <Dropdown.Item active='false' disabled='true'>More coming soon!</Dropdown.Item>
-          </DropdownButton>
-      </div>
-      { showResults ? <Map /> : null }
-      {/* <Map /> */}
-    </div>
-  );
+				<Switch>
+					<Route exact path="/">
+						<Map />
+					</Route>
+					<Route path="/water">
+						<WaterMap />
+					</Route>
+					<Route path="/realms">
+						<RealmsMap />
+					</Route>
+				</Switch>
+			</Router>
+		</div>
+	);
 }
 
 export default App;
