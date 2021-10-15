@@ -6,8 +6,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function RealmsMap() {
-
+const RealmsMap = () => {
+    
     return (
         <div>
             <h2>Cultural Realms</h2>

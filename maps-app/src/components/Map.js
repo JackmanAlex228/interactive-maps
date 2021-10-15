@@ -1,27 +1,19 @@
 import React, { useState, useCallback, useLayoutEffect } from "react";
-
-/* Imports */
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4geodata_usaLow from "@amcharts/amcharts4-geodata/usaLow";
 import am4geodata_data_countries2 from "@amcharts/amcharts4-geodata/data/countries2";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-
 import testSeries from '../data/country-data'
 
-/* Chart code */
-// Themes begin
 am4core.useTheme(am4themes_animated);
-// Themes end
 
-const Map = ({ onToggle }) => {
+const Map = () => {
   
     useLayoutEffect(() => {
 
-        // Themes begin
         am4core.useTheme(am4themes_animated);
-        // Themes end
 
         let continents = {
             "AF": 0,
