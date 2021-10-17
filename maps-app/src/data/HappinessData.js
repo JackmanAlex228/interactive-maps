@@ -1,6 +1,6 @@
 import * as am4core from "@amcharts/amcharts4/core";
 
-let testSeries = [
+let HappinessSeries = [
     { name: "Afghanistan", id: "AF", value: 25.23, rank: 149 },
     { name: "Albania", id: "AL", value: 51.17, rank: 93 },
     { name: "Algeria", id: "DZ", value: 48.87, rank: 109 },
@@ -181,4 +181,4 @@ let testSeries = [
     { name: "Zimbabwe", id: "ZW", value: 31.45, rank: 148 }
 ]
 
-export default testSeries;
+export default HappinessSeries;

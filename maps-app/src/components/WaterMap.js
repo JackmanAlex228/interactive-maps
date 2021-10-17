@@ -5,7 +5,7 @@ import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4geodata_usaLow from "@amcharts/amcharts4-geodata/usaLow";
 import am4geodata_data_countries2 from "@amcharts/amcharts4-geodata/data/countries2";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import testSeries from '../data/country-data'
+import WaterSeries from '../data/WaterData'
 
 am4core.useTheme(am4themes_animated);
 
@@ -52,7 +52,7 @@ const WaterMap = () => {
             "max": am4core.color("#2b36cc")
         });
 
-        worldSeries.data = testSeries;
+        worldSeries.data = WaterSeries;
 
         // Somehow, this makes the worldSeries.data thing above work
         polygonTemplate.propertyFields.fill = "fill";
