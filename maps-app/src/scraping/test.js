@@ -20,15 +20,19 @@ Yemen3,565,000,000486 20,107,409
 Zambia1,572,000,000393 10,971,698
 Zimbabwe3,570,000,000798 12,255,922
      */
-    var country_regex = /([A-Z])\D+/g;
-    var water_total_regex = /(?:00)\d+/g; // so far captured final 000 for water total, plus immadiate following digits
-    var water_capita_regex = /()/g;
-    var population_regex = /()/g;
+    var country_regex =         /([A-Z])\D+/g;
+    var water_total_regex =     /([0-9]).+(000)/g;
+    var water_capita_regex =    /()/g;
+    var population_regex =      /()/g;
     
     statsTable.each(function() {
         let row = $(this).find('td').text()
-        console.log(row.match(country_regex));
-        // console.log(row.match(water_total_regex));
+        console.log(
+            row.match(country_regex), 
+            row.match(water_total_regex),
+            row.match(water_capita_regex),
+            row.match(population_regex)
+        );
     });
 })
 
