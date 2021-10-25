@@ -5,11 +5,42 @@ import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4geodata_usaLow from "@amcharts/amcharts4-geodata/usaLow";
 import am4geodata_data_countries2 from "@amcharts/amcharts4-geodata/data/countries2";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import WaterSeries from '../data/WaterData'
+import WaterSeries from '../data/WaterData';
+import axios from 'axios';
+import cheerio from 'cheerio';
 
 am4core.useTheme(am4themes_animated);
 
 const WaterMap = () => {
+
+    const url = "https://www.worldometers.info/water";
+
+    async function fetchData(url){
+        console.log("Crawling data...")
+        // make http call to url
+        let response = await axios(url).catch((err) => console.log(err));
+    
+        if(response.status !== 200){
+            console.log("Error occurred while fetching data");
+            return;
+        }
+        return response;
+    }
+    
+    fetchData(url).then( (res) => {
+        const html = res.data;
+        const $ = cheerio.load(html);
+        const statsTable = $('#example2 > tbody > tr');
+        
+        statsTable.each(function() {
+            let country = $(this).find('td:nth-child(1)').text();
+            let waterUse = $(this).find('td:nth-child(2)').text();
+            let waterCapita = $(this).find('td:nth-child(3)').text();
+            let population = $(this).find('td:nth-child(4)').text();
+    
+            console.log(country, waterUse, waterCapita, population);
+        });
+    })
 
     useLayoutEffect(() => {
 
